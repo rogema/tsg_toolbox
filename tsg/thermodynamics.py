@@ -35,5 +35,5 @@ def compute_alpha_beta(data, temperature_var='SST', salinity_var='SSS'):
     SA = gsw.SA_from_SP(data[salinity_var], p, data['lon'], data['lat'])
     CT = gsw.CT_from_t(SA, data[temperature_var], p)
     rho, alpha, beta = gsw.rho_alpha_beta(SA, CT, p)
-    return data.assign(alpha=xr.DataArray(alpha, dims='time'),
+    return data.assign(rho=xr.DataArray(alpha, dims='time'), alpha=xr.DataArray(alpha, dims='time'),
                        beta=xr.DataArray(beta, dims='time'))
